@@ -8,17 +8,12 @@
 namespace itis {
 
 void LinkedList::Add(Element e) {
-  // Tip 1: создайте узел в куче со переданным значением
-  // Tip 2: есть 2 случая - список пустой и непустой
-  // Tip 3: не забудьте обновить поля head и tail
   // напишите свой код здесь ...
 }
 
 void LinkedList::Insert(int index, Element e) {
   internal::check_out_of_range(index, 0, size_ + 1);
 
-  // Tip 1: вставка элементов на позицию size эквивалентно операции добавления в конец
-  // Tip 2: рассмотрите несколько случаев:
   //        (1) список пустой,
   //        (2) добавляем в начало списка,
   //        (3) добавляем в конец списка
@@ -29,20 +24,16 @@ void LinkedList::Insert(int index, Element e) {
 
 void LinkedList::Set(int index, Element e) {
   internal::check_out_of_range(index, 0, size_);
-  // Tip 1: используйте функцию find_node(index)
   // напишите свой код здесь ...
 }
 
 Element LinkedList::Remove(int index) {
   internal::check_out_of_range(index, 0, size_);
-  // Tip 1: рассмотрите случай, когда удаляется элемент в начале списка
-  // Tip 2: используйте функцию find_node(index)
   // напишите свой код здесь ...
   return {};
 }
 
 void LinkedList::Clear() {
-  // Tip 1: люди в черном (MIB) пришли стереть вам память
   // напишите свой код здесь ...
 }
 
@@ -59,7 +50,6 @@ int LinkedList::IndexOf(Element e) const {
 
 Node *LinkedList::find_node(int index) const {
   assert(index >= 0 && index < size_);
-  // Tip 1: можете сразу обработать случаи поиска начала и конца списка
   // напишите свой код здесь ...
   return {};
 }
