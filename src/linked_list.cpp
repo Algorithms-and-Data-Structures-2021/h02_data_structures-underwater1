@@ -62,7 +62,7 @@ namespace itis {
             auto node = find_node(index);
             Element element = node->data;
             auto prev_node = find_node(index - 1);
-            auto next_node = find_node(index - 1);
+            auto next_node = find_node(index + 1);
             prev_node->next = next_node;
             delete node;
             return element;
@@ -78,6 +78,7 @@ namespace itis {
             delete node_now;
             node_now = next_node;
         }
+        head_ = nullptr;
         tail_ = nullptr;
         size_ = 0;
     }
