@@ -53,9 +53,10 @@ namespace itis {
         internal::check_out_of_range(index, 0, size_);
         if (index == 0) {
             auto node = find_node(0);
-            Element element = head_->data;
+            Element element = node->data;
             head_ = node->next;
             delete node;
+            size_--;
             return element;
         }
         if (index > 0 && index < size_) {
@@ -65,9 +66,9 @@ namespace itis {
             auto next_node = find_node(index + 1);
             prev_node->next = next_node;
             delete node;
+            size_--;
             return element;
         }
-        size_--;
         return {};
     }
 
