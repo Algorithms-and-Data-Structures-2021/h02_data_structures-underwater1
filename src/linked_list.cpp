@@ -52,10 +52,10 @@ namespace itis {
     Element LinkedList::Remove(int index) {
         internal::check_out_of_range(index, 0, size_);
         if (index == 0) {
-            auto node = find_node(0);
+            auto node = head_->next;
             Element element = node->data;
-            head_ = node->next;
-            delete node;
+            delete head_;
+            head_ = node;
             size_--;
             return element;
         }
@@ -63,8 +63,7 @@ namespace itis {
             auto node = find_node(index);
             Element element = node->data;
             auto prev_node = find_node(index - 1);
-            auto next_node = find_node(index + 1);
-            prev_node->next = next_node;
+            prev_node->next = node->next;
             delete node;
             size_--;
             return element;
