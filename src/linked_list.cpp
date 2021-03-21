@@ -39,30 +39,30 @@ namespace itis {
         }
         if (index > 0 && index < size_) {
             auto index_node = new Node(e, find_node(index));
-            find_node(index-1)->next = index_node;
+            find_node(index - 1)->next = index_node;
         }
         size_++;
     }
 
     void LinkedList::Set(int index, Element e) {
         internal::check_out_of_range(index, 0, size_);
-        find_node(index)->data=e;
+        find_node(index)->data = e;
     }
 
     Element LinkedList::Remove(int index) {
         internal::check_out_of_range(index, 0, size_);
-        if (index==0){
+        if (index == 0) {
             auto node = find_node(0);
             Element element = head_->data;
             head_ = node->next;
             delete node;
             return element;
         }
-        if (index>0 && index<size_){
+        if (index > 0 && index < size_) {
             auto node = find_node(index);
             Element element = node->data;
-            auto prev_node = find_node(index-1);
-            auto next_node = find_node(index-1);
+            auto prev_node = find_node(index - 1);
+            auto next_node = find_node(index - 1);
             prev_node->next = next_node;
             delete node;
             return element;
@@ -77,7 +77,7 @@ namespace itis {
             delete node_now;
             node_now = next_node;
         }
-        size_=0;
+        size_ = 0;
     }
 
     Element LinkedList::Get(int index) const {
@@ -85,15 +85,17 @@ namespace itis {
         assert(index >= 0 && index < size_);
         if (index == 0) {
             return head_->data;
-        } else if (index == size_ - 1) {
-            return tail_->data;
-        } else {
-            int count = 0;
-            for (Node *node = head_; node != nullptr; node = node->next) {
-                if (count == index) return node->data;
-                count++;
-            }
         }
+        if (index == size_ - 1) {
+            return tail_->data;
+        }
+
+        int count = 0;
+        for (Node *node = head_; node != nullptr; node = node->next) {
+            if (count == index) return node->data;
+            count++;
+        }
+
         return {};
     }
 
@@ -110,15 +112,18 @@ namespace itis {
         assert(index >= 0 && index < size_);
         if (index == 0) {
             return head_;
-        } else if (index == size_ - 1) {
-            return tail_;
-        } else {
-            int count = 0;
-            for (Node *node = head_; node != nullptr; node = node->next) {
-                if (count == index) return node;
-                count++;
-            }
         }
+
+        if (index == size_ - 1) {
+            return tail_;
+        }
+
+        int count = 0;
+        for (Node *node = head_; node != nullptr; node = node->next) {
+            if (count == index) return node;
+            count++;
+        }
+
         return {};
     }
 
