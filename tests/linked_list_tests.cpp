@@ -27,7 +27,7 @@ SCENARIO("create empty linked list") {
       CHECK(list->tail() == Element::UNINITIALIZED);
     }
   }
-}
+} //+
 
 SCENARIO("add elements to the linked list") {
 
@@ -57,7 +57,7 @@ SCENARIO("add elements to the linked list") {
       }
     }
   }
-}
+}//+
 
 SCENARIO("insert elements to the linked list") {
 
@@ -301,7 +301,7 @@ SCENARIO("get linked list element by index") {
       }
     }
   }
-}
+} //+
 
 SCENARIO("find linked list elements") {
 
@@ -348,4 +348,4 @@ SCENARIO("find linked list elements") {
       }
     }
   }
-}
+} //+
