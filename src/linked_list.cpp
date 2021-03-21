@@ -53,16 +53,16 @@ namespace itis {
         internal::check_out_of_range(index, 0, size_);
         if (index == 0) {
             Node *node = head_->next;
-            Element element = node->data;
+            Element element = head_->data;
             delete head_;
             head_ = node;
             size_--;
             return element;
         }
-        if (index > 0 && index < size_) {
+        if (index>0 && index < size_) {
             Node *node = find_node(index);
+            Node *prev_node = find_node(index-1);
             Element element = node->data;
-            Node *prev_node = find_node(index - 1);
             prev_node->next = node->next;
             delete node;
             size_--;
@@ -73,7 +73,7 @@ namespace itis {
 
     void LinkedList::Clear() {
         auto node_now = head_;
-        while (node_now!=nullptr){
+        while (node_now != nullptr) {
             auto next_node = node_now->next;
             delete node_now;
             node_now = next_node;
