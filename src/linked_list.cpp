@@ -52,21 +52,21 @@ namespace itis {
     Element LinkedList::Remove(int index) {
         internal::check_out_of_range(index, 0, size_);
         if (index == 0) {
-            auto node = head_->next;
-            Element element = node->data;
+            Node *node = head_->next;
+            Element e = head_->data;
             delete head_;
             head_ = node;
             size_--;
-            return element;
+            return e;
         }
-        if (index > 0 && index < size_) {
-            auto node = find_node(index);
-            Element element = node->data;
-            auto prev_node = find_node(index - 1);
+        if (index>0 && index < size_) {
+            Node *node = find_node(index);
+            Node *prev_node = find_node(index-1);
+            Element e = node->data;
             prev_node->next = node->next;
             delete node;
             size_--;
-            return element;
+            return e;
         }
         return {};
     }
