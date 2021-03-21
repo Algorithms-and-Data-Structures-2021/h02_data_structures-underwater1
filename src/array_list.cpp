@@ -12,10 +12,10 @@ namespace itis {
         if (capacity <= 0) {
             throw std::invalid_argument("ArrayList::capacity must be positive");
         }
-        data_  = new Element[capacity_];
+        data_ = new Element[capacity_];
         std::fill(data_, data_ + capacity, Element::UNINITIALIZED);
         size_ = 0;
-        capacity_  = capacity;
+        capacity_ = capacity;
     }
 
     ArrayList::~ArrayList() {
@@ -23,7 +23,7 @@ namespace itis {
         capacity_ = 0;
         if (data_ != nullptr) {
             delete[] data_;
-        data_ = nullptr;
+            data_ = nullptr;
         }
     }
 
@@ -45,7 +45,7 @@ namespace itis {
             internal::check_out_of_range(index, 0, size_);
         }
         if (size_ == capacity_) {
-            resize(kCapacityGrowthCoefficient+size_);
+            resize(kCapacityGrowthCoefficient + size_);
         }
         assert(size_ < capacity_);  // я ни в коем случае не дам вам совершить ошибку всей вашей жизни
         std::copy(data_ + index, data_ + size_, data_ + index + 1);
