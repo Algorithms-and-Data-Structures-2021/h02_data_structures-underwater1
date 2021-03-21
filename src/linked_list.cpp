@@ -73,10 +73,12 @@ namespace itis {
 
     void LinkedList::Clear() {
         auto node_now = head_;
-        for (Node *next_node = head_->next; next_node != nullptr; next_node = next_node->next) {
+        while (node_now!=nullptr){
+            auto next_node = node_now->next;
             delete node_now;
             node_now = next_node;
         }
+        tail_ = nullptr;
         size_ = 0;
     }
 
